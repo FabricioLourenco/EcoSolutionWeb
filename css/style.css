@@ -104,3 +104,7 @@ body {
 .container-baixo {
     margin-top: 200px;
 }
+
+.text-muted {
+    color: white !important;
+}
