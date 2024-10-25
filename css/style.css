@@ -1,18 +1,22 @@
+/* Navbar styles */
 .navbar-toggler {
-    border-color: white; 
+    border-color: white;
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    
 }
 
-.navbar-brand, .welcome-message, .nav-link, .dropdown-toggle {
-    color: white !important; 
+.navbar-brand,
+.welcome-message,
+.nav-link,
+.dropdown-toggle {
+    color: white !important;
 }
 
-.offcanvas-title, .dropdown-item {
-    color: white; 
+.offcanvas-title,
+.dropdown-item {
+    color: white;
 }
 
 body {
@@ -23,6 +27,7 @@ body {
 
 .greeting {
     font-size: 2rem;
+    text-align: center;
 }
 
 .month-header {
@@ -40,6 +45,62 @@ body {
     justify-content: space-between;
 }
 
-.container-baixo{
+.avatar-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-container img {
+    border-radius: 50%;
+    border: 2px solid #00bcd4; 
+    width: 100px;
+    height: 100px;
+}
+
+.user-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.user-info h2 {
+    margin: 5px 0;
+}
+
+.user-info p {
+    color: #00bcd4; 
+    font-weight: bold;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-container button {
+    width: 80%;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.button-container .green-button {
+    background-color: #5cb85c; 
+    color: white;
+}
+
+.button-container .red-button {
+    background-color: #d9534f; 
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .button-container button {
+        width: 100%;
+    }
+}
+
+.container-baixo {
     margin-top: 200px;
-}                   
+}
