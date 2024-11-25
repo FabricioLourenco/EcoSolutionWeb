@@ -27,17 +27,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item"><a class="nav-link active" href="/html/index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Dropdown</a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,18 +41,27 @@
             <p class="text-muted">Operador II</p>
             <div class="d-flex justify-content-center mt-3">
                 <img src="/imagens/cardapio.png" alt="cardapio" class="btn btn-outline-secondary mx-2 img-same-size" style="width: 50px;">
-                <img src="/imagens/perfil.png" alt="cardapio" class="btn btn-outline-secondary mx-2 img-same-size" style="width: 50px;">
+                <a href="Telaperfil.html">
+                    <img 
+                        src="/imagens/perfil.png" 
+                        alt="perfil" 
+                        class="btn btn-outline-secondary mx-2 img-same-size" 
+                        style="width: 50px;">
+                </a>
+                
             </div>
         </div>
 
         <div class="action-buttons mt-4">
-            <button class="btn btn-success w-100 mb-3">Manuais de Processos</button>
+            <button class="btn btn-success w-100 mb-3" onclick="window.location.href='TelaManuais.html'">
+                Manuais de Processos
+            </button>
             <button id="solicitarMateriaisBtn" class="btn btn-success w-100 mb-3" onclick="window.location.href='solicitamateriais.html'">
                 Solicitar Materiais
             </button>
-            
-            
-            <button class="btn btn-success w-100 mb-3">Estoque</button>
+            <button class="btn btn-success w-100 mb-3" onclick="window.location.href='TelaEstoque.html'">
+                Estoque
+            </button>
             <button class="btn btn-success w-100 mb-3">Abrir Chamado</button>
             <button class="btn btn-danger w-100">Chamada de Emergência</button>
         </div>
