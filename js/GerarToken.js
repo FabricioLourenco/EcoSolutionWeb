@@ -8,6 +8,7 @@ function gerarToken() {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json', 
+            'vx-api-key': 'FB4094C80D1E2FE51D931A9726C134DACCD8197B439E33079C20BB9F98D01260'  // Incluindo a API Key no cabeçalho
         },
         body: JSON.stringify(dados), 
     })
