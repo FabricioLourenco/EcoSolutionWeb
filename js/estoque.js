@@ -1,6 +1,3 @@
-// estoque.js
-
-// Dados simulados de estoque
 const stockItems = [
     {
         title: "Produto 1",
@@ -39,7 +36,6 @@ const stockItems = [
     }
 ];
 
-// Função para criar um card de produto
 function createProductCard(item) {
     return `
         <div class="col">
@@ -55,7 +51,6 @@ function createProductCard(item) {
     `;
 }
 
-// Função para carregar os cards na página
 function loadStockItems() {
     const container = document.getElementById("stock-cards-container");
     stockItems.forEach(item => {
@@ -63,5 +58,4 @@ function loadStockItems() {
     });
 }
 
-// Carregar os dados quando o documento for carregado
 document.addEventListener("DOMContentLoaded", loadStockItems);
