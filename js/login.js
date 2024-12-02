@@ -1,39 +1,40 @@
-const usuarios = [
-    { login: "admin", senha: "123456" },
-    { login: "usuario", senha: "senha123" }
-];
-
-
-function autenticar(event) {
-    event.preventDefault();
-
-    const loginInput = document.querySelector('input[placeholder="Login"]').value;
-    const senhaInput = document.querySelector('input[placeholder="Senha"]').value;
-
-    const usuarioValido = usuarios.find(
-        (usuario) => usuario.login === loginInput && usuario.senha === senhaInput
-    );
-
-    if (usuarioValido) {
-
-        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioValido));
-        window.location.href = "/html/agenda.html";
-    } else {
-        alert("Login ou senha inválidos!");
-    }
-}
-
-
-function verificarSessao() {
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    if (usuarioLogado) {
-        window.location.href = "/html/agenda.html";
-    }
-}
-
-// Adiciona evento ao carregar a página de login
 document.addEventListener("DOMContentLoaded", () => {
-    verificarSessao();
-    const form = document.querySelector("form");
-    form.addEventListener("submit", autenticar);
+    const formLogin = document.getElementById("form-login");
+
+    // Dados simulados de usuários para validação
+    const users = [
+        { username: "admin@gmail.com", password: "1234", name: "Vitor Cardoso", role: "Operador II" },
+        { username: "usuario", password: "abcd", name: "João Silva", role: "Operador I" },
+    ];
+
+    // Verificar se já existe uma sessão ativa
+    if (sessionStorage.getItem("user")) {
+        redirectToDashboard();
+    }
+
+    // Evento de login
+    formLogin.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const username = formLogin.querySelector("input[placeholder='Login']").value;
+        const password = formLogin.querySelector("input[placeholder='Senha']").value;
+
+        // Verifica os dados do usuário
+        const user = users.find((u) => u.username === username && u.password === password);
+
+        if (user) {
+            // Salva os dados do usuário na sessão
+            sessionStorage.setItem("user", JSON.stringify(user));
+
+            // Redireciona para o painel
+            redirectToDashboard();
+        } else {
+            alert("Usuário ou senha inválidos!");
+        }
+    });
+
+    // Função para redirecionar ao painel de controle
+    function redirectToDashboard() {
+        window.location.href = "./PainelControle.html"; // Nome da sua página de painel de controle
+    }
 });
