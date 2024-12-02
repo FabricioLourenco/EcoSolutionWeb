@@ -30,40 +30,40 @@ function carregarTarefas(tarefas) {
     });
 }
 
+/**
+ * Busca tarefas utilizando o token.
+ */
 function buscarTarefas() {
-    const token = localStorage.getItem("bearerToken"); // Recuperando o token do localStorage
-
-    if (!token) {
-        console.error("Token não encontrado. Por favor, faça o login.");
-        alert("Token não encontrado. Por favor, faça o login.");
-        return;
-    }
-
-    fetch('https://localhost:7214/api/v1/Tarefa/buscar-tarefas', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Adicionando o token ao cabeçalho
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Falha ao carregar tarefas: ' + response.statusText);
-        }
-        return response.json(); // Convertendo a resposta para JSON
-    })
-    .then(data => {
-        if (data.sucesso) {
-            carregarTarefas(data.data);
-        } else {
-            console.error('Erro ao carregar tarefas:', data.mensagens);
-            alert('Erro ao carregar tarefas.');
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao buscar tarefas:', error);
-        alert('Erro ao buscar tarefas. Verifique a sua conexão.');
+    GerarToken.obterToken(token => {
+        fetch('https://localhost:7214/api/v1/Tarefa/buscar-tarefas', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Adicionando o token ao cabeçalho
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Falha ao carregar tarefas: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.sucesso) {
+                    carregarTarefas(data.data);
+                } else {
+                    console.error('Erro ao carregar tarefas:', data.mensagens);
+                    alert('Erro ao carregar tarefas.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao buscar tarefas:', error);
+                alert('Erro ao buscar tarefas. Verifique a sua conexão.');
+            });
     });
 }
 
-window.onload = buscarTarefas; // Chama a função para buscar as tarefas assim que a página for carregada
+// Executar ao carregar a página
+window.onload = function () {
+    buscarTarefas();
+};
