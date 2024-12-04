@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dados simulados de usuários para validação
     const users = [
-        { username: "admin@gmail.com", password: "1234", name: "Vitor Cardoso", role: "Operador II" },
+        { username: "admin@gmail.com", password: "1234", name: "Fabrício Borges", role: "Operador II" },
         { username: "usuario", password: "abcd", name: "João Silva", role: "Operador I" },
     ];
 
