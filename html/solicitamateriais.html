@@ -60,13 +60,19 @@
                     </div>
                     <div class="mb-3 text-start">
                         <label for="unidadeMedida" class="form-label text-white">Unidade de Medida</label>
-                        <input type="text" class="form-control bg-dark text-white" id="unidadeMedida" placeholder="Digite a unidade de medida">
+                        <select id="unidadeMedida" class="form-select bg-dark text-white">
+                            <!-- As opções serão preenchidas dinamicamente pelo JavaScript -->
+                        </select>
                     </div>
+                    
                     <div class="mb-3 text-start">
                         <label for="setor" class="form-label text-white">Setor</label>
-                        <input type="text" class="form-control bg-dark text-white" id="setor" placeholder="Digite o setor">
+                        <select id="setor" class="form-select bg-dark text-white">
+                            <!-- As opções serão preenchidas dinamicamente pelo JavaScript -->
+                        </select>
                     </div>
-                    <button type="submit" class="btn btn-success w-100 mt-4">Solicitar Material</button>
+                    
+                    <button type="submit" id="btnSolicitarMaterial" class="btn btn-success w-100 mt-4">Solicitar Material</button>
                 </form>
             </div>
         </div>
@@ -74,5 +80,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/js/gerarToken.js"></script>
+    <script src="/js/materiais.js"></script>
 </body>
 </html>
