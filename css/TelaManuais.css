@@ -1,0 +1,68 @@
+/* Geral */
+body {
+    background-color: #1d1d27;
+}
+
+#manuais-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebra de linha */
+    justify-content: space-between;
+    /* Espaçamento horizontal */
+    gap: 20px;
+    /* Espaço entre os cards */
+    padding: 20px;
+}
+
+.card {
+    flex: 1 1 calc(20% - 20px);
+    /* Cada card ocupa 20% da largura menos o espaçamento */
+    max-width: calc(20% - 20px);
+    /* Limita a largura máxima */
+    margin-bottom: 20px;
+    /* Espaço inferior para separação de linhas */
+    background-color: #282c34;
+    color: white;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card img {
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+.card-title {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    color: #adb5bd;
+}
+
+.btn {
+    margin-top: auto;
+    /* Alinha o botão na parte inferior do card */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 20px);
+        /* 2 cards por linha em telas médias */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        flex: 1 1 100%;
+        /* 1 card por linha em telas pequenas */
+    }
+}

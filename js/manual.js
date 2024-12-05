@@ -3,40 +3,27 @@
  * @param {Array} manuais - Lista de manuais retornados pela API.
  */
 function carregarManuais(manuais) {
-    const container = document.querySelector('.container');
+    const container = document.getElementById('manuais-container');
     container.innerHTML = '';
 
     manuais.forEach(manual => {
         const card = document.createElement('div');
-        card.classList.add('card', 'text-center');
-        card.style.width = '18rem';
-        card.style.backgroundColor = '#2c2c38';
-        card.style.color = 'white';
-        card.style.border = 'none';
-        card.style.display = 'flex';
-        card.style.flexDirection = 'column';
-        card.style.justifyContent = 'flex-start'; // Alinha itens no topo do card
-        card.style.alignItems = 'center';
+        card.classList.add('card');
 
         const img = document.createElement('img');
         img.src = '/assets/pdf.png';  // A imagem associada ao PDF
         img.alt = 'Manual em PDF';
-        img.className = 'card-img-top';
-        img.style.borderRadius = '10px';
-        img.style.marginTop = '20px';
-        img.style.width = '120px';  // Ajustando a largura da imagem
-        img.style.height = '120px'; // Ajustando a altura da imagem
 
         const cardBody = document.createElement('div');
         cardBody.classList.add('card-body');
 
         const title = document.createElement('h5');
         title.classList.add('card-title');
-        title.textContent = manual.nome; // Nome do manual
+        title.textContent = manual.nome;
 
         const description = document.createElement('p');
-        description.classList.add('card-text', 'text-muted');
-        description.textContent = manual.descricao; // Descrição do manual
+        description.classList.add('card-text');
+        description.textContent = manual.descricao;
 
         const button = document.createElement('button');
         button.classList.add('btn', 'btn-success', 'w-100');
@@ -44,7 +31,6 @@ function carregarManuais(manuais) {
 
         // Criação do link para abrir o PDF em base64 em uma nova guia
         button.addEventListener('click', () => {
-            // Acessar o PDF vinculado (base64)
             const base64PDF = manual.arquivosVinculados[0]?.arquivo.dados;
             if (base64PDF) {
                 const pdfWindow = window.open();
@@ -54,7 +40,6 @@ function carregarManuais(manuais) {
             }
         });
 
-        // Colocando o título e descrição acima do botão
         cardBody.appendChild(title);
         cardBody.appendChild(description);
         cardBody.appendChild(button);
@@ -75,7 +60,7 @@ function buscarManuais() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Token gerado e válido
+                'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
@@ -87,7 +72,6 @@ function buscarManuais() {
             .then(data => {
                 if (data.sucesso) {
                     carregarManuais(data.data);
-                    console.log(data.data);
                 } else {
                     console.error('Erro ao carregar manuais:', data.mensagens);
                     alert('Erro ao carregar manuais.');
