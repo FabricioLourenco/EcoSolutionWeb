@@ -81,6 +81,30 @@ body {
     /* Cor ao passar o mouse */
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+/* Estilo do título */
+.titulo-estoque {
+    font-family: 'Roboto', sans-serif;
+    /* Fonte personalizada */
+    font-size: 2.5rem;
+    /* Tamanho maior */
+    font-weight: bold;
+    /* Negrito */
+    text-align: center;
+    /* Centralizado */
+    background: linear-gradient(90deg, #4b7294, #a4c56d, #84bbe0, #84b174, #70a074);
+    -webkit-background-clip: text;
+    /* Apenas clipe no texto */
+    -webkit-text-fill-color: transparent;
+    /* Preenche com gradiente */
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    /* Sombra para destacar */
+}
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     .card {
