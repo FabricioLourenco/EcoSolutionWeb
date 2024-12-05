@@ -1,0 +1,97 @@
+/* Estilo geral */
+body {
+    background-color: #1d1d27;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container dos cards */
+#stock-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite quebra de linha */
+    justify-content: space-between;
+    /* Espaçamento horizontal */
+    gap: 20px;
+    /* Espaço entre os cards */
+    padding: 20px;
+}
+
+/* Estilo dos cards */
+.card {
+    flex: 1 1 calc(20% - 20px);
+    /* Cada card ocupa 20% da largura menos o espaçamento */
+    max-width: calc(20% - 20px);
+    /* Limita a largura máxima */
+    margin-bottom: 20px;
+    /* Espaço inferior para separação de linhas */
+    background-color: #282c34;
+    color: white;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    /* Borda arredondada */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* Sombra para destacar os cards */
+}
+
+/* Imagem dos produtos */
+.card img {
+    border-radius: 10px;
+    /* Bordas arredondadas na imagem */
+    margin-top: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+/* Título do card */
+.card-title {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Texto adicional */
+.card-text {
+    color: #adb5bd;
+    font-size: 0.9rem;
+}
+
+/* Botão dentro do card */
+.btn {
+    margin-top: auto;
+    /* Alinha o botão na parte inferior do card */
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4cae4c;
+    /* Cor ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 20px);
+        /* 2 cards por linha em telas médias */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        flex: 1 1 100%;
+        /* 1 card por linha em telas pequenas */
+    }
+}
