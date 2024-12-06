@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
-    <link rel="stylesheet" href="/css/TelaTarefas.css">
+    <link rel="stylesheet" href="/css/TelaTarefas.css"> 
     <style>
-        /* Ajustes adicionais podem ser adicionados aqui */
     </style>
 </head>
 <body>
@@ -14,86 +13,53 @@
         <h1 style="text-align: center; color: #00bcd4; margin: 20px;">Task Manager</h1>
     </header>
 
-    <main>
-        <div class="container-baixo">
-            <!-- Tarefas serão carregadas dinamicamente aqui pelo JavaScript -->
+    <main class="task-container">
+        <div class="column">
+            <h3>To Do</h3>
+            <div class="task" onclick="openModal('Task 1')">Task 1</div>
+            <div class="task" onclick="openModal('Task 2')">Task 2</div>
+        </div>
+        <div class="column">
+            <h3>In Progress</h3>
+            <div class="task" onclick="openModal('Task 3')">Task 3</div>
+        </div>
+        <div class="column">
+            <h3>Done</h3>
+            <div class="task" onclick="openModal('Task 4')">Task 4</div>
         </div>
     </main>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Edit Task</h3>
+            <form id="taskForm">
+                <input type="text" id="taskName" placeholder="Task Name" required />
+                <textarea id="taskDescription" placeholder="Task Description" rows="5" required></textarea>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 
     <footer style="text-align: center; margin: 20px; color: #9e9e9e;">
         &copy; 2024 Task Manager. All rights reserved.
     </footer>
 
     <script>
-        function carregarTarefas(tarefas) {
-            const container = document.querySelector('.container-baixo');
-            container.innerHTML = ''; // Limpa o conteúdo atual da página para carregar novamente
-
-            tarefas.forEach(tarefa => {
-                const dataTarefa = new Date(tarefa.horario);
-                const dia = dataTarefa.getDate().toString().padStart(2, '0');
-                const mes = dataTarefa.toLocaleString('default', { month: 'short' });
-                const horario = dataTarefa.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-                // Criação de elementos diretamente no DOM (evita reflow/repaint desnecessário)
-                const row = document.createElement('div');
-                row.classList.add('row', 'text-center', 'mt-5');
-
-                const col = document.createElement('div');
-                col.classList.add('col-md-4');
-
-                const dayDiv = document.createElement('div');
-                dayDiv.classList.add('day', 'mb-3');
-                dayDiv.innerHTML = `<span class="fs-4">${dia}</span> <small>${mes}</small>`;
-
-                const taskDiv = document.createElement('div');
-                taskDiv.classList.add('task', 'bg-warning', 'text-white', 'p-3', 'rounded', 'mb-2');
-                taskDiv.innerHTML = `${tarefa.titulo} <span class="float-end">${horario}</span>`;
-
-                col.appendChild(dayDiv);
-                col.appendChild(taskDiv);
-                row.appendChild(col);
-                container.appendChild(row); // Adiciona a nova linha ao container
-            });
+        function openModal(taskName) {
+            document.getElementById('taskModal').style.display = 'flex';
+            document.getElementById('taskName').value = taskName;
         }
 
-        /**
-         * Busca tarefas utilizando o token.
-         */
-        function buscarTarefas() {
-            GerarToken.obterToken(token => {
-                fetch('https://localhost:7214/api/v1/Tarefa/buscar-tarefas', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}` // Adicionando o token ao cabeçalho
-                    }
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Falha ao carregar tarefas: ' + response.statusText);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.sucesso) {
-                            carregarTarefas(data.data);
-                        } else {
-                            console.error('Erro ao carregar tarefas:', data.mensagens);
-                            alert('Erro ao carregar tarefas.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erro ao buscar tarefas:', error);
-                        alert('Erro ao buscar tarefas. Verifique a sua conexão.');
-                    });
-            });
+        function closeModal() {
+            document.getElementById('taskModal').style.display = 'none';
         }
 
-        // Executar ao carregar a página
-        window.onload = function () {
-            buscarTarefas();
-        };
+        document.getElementById('taskForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Task updated!');
+            closeModal();
+        });
     </script>
 </body>
 </html>
