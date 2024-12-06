@@ -41,6 +41,7 @@ function carregarMateriais(materiais) {
 
 function createMaterialCard(material) {
     const unidadeMedida = mapUnidadeMedida(material.unidadeMedida);
+    const setor = mapSetor(material.setor);
 
     return `
         <div class="card">
@@ -49,13 +50,14 @@ function createMaterialCard(material) {
             <div class="card-body">
                 <h5 class="card-title">${material.nome || 'Sem nome'}</h5>
                 <p class="card-text">${material.descricao || 'Sem descrição'}</p>
+                <p class="card-text"><strong>Setor: </strong>${setor || 'Setor'} </p>
                 <p class="card-text"><strong>Quantidade:</strong> ${material.quantidade || 0} ${unidadeMedida || 'Unidade'}</p>
             </div>
         </div>
     `;
 }
 
-// Função de mapeamento entre o número do enum e o nome da unidade de medida
+
 function mapUnidadeMedida(valor) {
     const unidades = {
         1: 'm',
@@ -64,3 +66,15 @@ function mapUnidadeMedida(valor) {
 
     return unidades[valor] || 'Unidade';
 }
+
+function mapSetor(valor) {
+    const setores = {
+        1: 'Produção',
+        2: 'Almoxarifado',
+        3: 'Vendas'
+    };
+
+    return setores[valor] || 'Setor';
+}
+
+
