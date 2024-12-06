@@ -1,45 +1,13 @@
-function carregarTarefas(tarefas) {
-    const container = document.querySelector('.container-baixo');
-    container.innerHTML = ''; // Limpa o conteúdo atual da página para carregar novamente
+document.addEventListener("DOMContentLoaded", buscarTarefas);
 
-    tarefas.forEach(tarefa => {
-        const dataTarefa = new Date(tarefa.horario);
-        const dia = dataTarefa.getDate().toString().padStart(2, '0');
-        const mes = dataTarefa.toLocaleString('default', { month: 'short' });
-        const horario = dataTarefa.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-        // Criação de elementos diretamente no DOM (evita reflow/repaint desnecessário)
-        const row = document.createElement('div');
-        row.classList.add('row', 'text-center', 'mt-5');
-
-        const col = document.createElement('div');
-        col.classList.add('col-md-4');
-
-        const dayDiv = document.createElement('div');
-        dayDiv.classList.add('day', 'mb-3');
-        dayDiv.innerHTML = `<span class="fs-4">${dia}</span> <small>${mes}</small>`;
-
-        const taskDiv = document.createElement('div');
-        taskDiv.classList.add('task', 'bg-warning', 'text-white', 'p-3', 'rounded', 'mb-2');
-        taskDiv.innerHTML = `${tarefa.titulo} <span class="float-end">${horario}</span>`;
-
-        col.appendChild(dayDiv);
-        col.appendChild(taskDiv);
-        row.appendChild(col);
-        container.appendChild(row); // Adiciona a nova linha ao container
-    });
-}
-
-/**
- * Busca tarefas utilizando o token.
- */
 function buscarTarefas() {
+
     GerarToken.obterToken(token => {
         fetch('https://localhost:7214/api/v1/Tarefa/buscar-tarefas', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Adicionando o token ao cabeçalho
+                'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
@@ -63,7 +31,33 @@ function buscarTarefas() {
     });
 }
 
-// Executar ao carregar a página
-window.onload = function () {
-    buscarTarefas();
-};
+function carregarTarefas(tarefas) {
+    const container = document.getElementById("task-container");
+    container.innerHTML = '';
+
+    tarefas.forEach(tarefa => {
+        const cardHTML = createTaskCard(tarefa);
+        container.innerHTML += cardHTML;
+    });
+}
+
+function createTaskCard(tarefa) {
+    const dataTarefa = new Date(tarefa.horario);
+    const dia = dataTarefa.getDate().toString().padStart(2, '0');
+    const mes = dataTarefa.toLocaleString('default', { month: 'short' });
+    const horario = dataTarefa.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    return `
+        <div class="col">
+            <div class="card bg-light text-dark h-100">
+                <div class="card-body">
+                    <h5 class="card-title">${tarefa.titulo || 'Tarefa'}</h5>
+                    <p class="card-text">${tarefa.descricao || 'Sem descrição disponível'}</p>
+                    <p class="card-text"><strong>Data:</strong> ${dia} ${mes}</p>
+                    <p class="card-text"><strong>Hora:</strong> ${horario}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
