@@ -8,20 +8,17 @@ body {
 
 /* Container de tarefas */
 #task-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Três colunas iguais */
+    gap: 20px; /* Espaço entre os cards */
     padding: 20px;
 }
 
 /* Card de tarefa */
 .card {
-    flex: 1 1 calc(30% - 20px);
-    max-width: calc(30% - 20px);
-    background-color: #282c34;
+    background-color: #2c2f3b; /* Cor de fundo suave */
     border: none;
-    color: white;
+    color: #ffffff; /* Texto claro */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -42,19 +39,19 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #f8f9fa;
+    color: #f8f9fa; /* Cor clara para o título */
 }
 
 /* Detalhes da tarefa */
 .card-text {
     margin-bottom: 10px;
-    color: #adb5bd;
+    color: #adb5bd; /* Texto secundário */
 }
 
 /* Data e Hora */
 .card-meta {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #6c757d; /* Cor sutil para data e hora */
     margin-bottom: 10px;
 }
 
@@ -78,21 +75,21 @@ body {
 }
 
 .edit-button {
-    background-color: #ffc107; /* Cor amarela */
-    color: #282c34; /* Texto escuro */
+    background-color: #4b7294; /* Cor azul suave */
+    color: #ffffff; /* Texto claro */
 }
 
 .edit-button:hover {
-    background-color: #e0a800;
+    background-color: #3b5e78; /* Cor azul mais escura */
 }
 
 .delete-button {
-    background-color: #dc3545; /* Cor vermelha */
+    background-color: #d9534f; /* Cor vermelha */
     color: white;
 }
 
 .delete-button:hover {
-    background-color: #c82333;
+    background-color: #c9302c; /* Cor vermelha mais escura */
 }
 
 /* Spinner de carregamento */
@@ -118,14 +115,14 @@ body {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .card {
-        flex: 1 1 calc(45% - 20px);
+@media (max-width: 1024px) {
+    #task-container {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas em telas menores */
     }
 }
 
-@media (max-width: 576px) {
-    .card {
-        flex: 1 1 100%;
+@media (max-width: 768px) {
+    #task-container {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
     }
 }
