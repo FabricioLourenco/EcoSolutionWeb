@@ -39,8 +39,9 @@ function carregarMateriais(materiais) {
     });
 }
 
-
 function createMaterialCard(material) {
+    const unidadeMedida = mapUnidadeMedida(material.unidadeMedida);
+
     return `
         <div class="card">
             <img src="${material.imagem || '/assets/estoque.png'}" 
@@ -48,8 +49,18 @@ function createMaterialCard(material) {
             <div class="card-body">
                 <h5 class="card-title">${material.nome || 'Sem nome'}</h5>
                 <p class="card-text">${material.descricao || 'Sem descrição'}</p>
-                <p class="card-text"><strong>Quantidade:</strong> ${material.quantidade || 0} ${material.unidadeMedida || 'Unidade'}</p>
+                <p class="card-text"><strong>Quantidade:</strong> ${material.quantidade || 0} ${unidadeMedida || 'Unidade'}</p>
             </div>
         </div>
     `;
+}
+
+// Função de mapeamento entre o número do enum e o nome da unidade de medida
+function mapUnidadeMedida(valor) {
+    const unidades = {
+        1: 'm',
+        2: 'kg'
+    };
+
+    return unidades[valor] || 'Unidade';
 }
