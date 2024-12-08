@@ -1,68 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarefas</title>
+    <title>Agenda de Tarefas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/TelaTarefas.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/imagens/logokemia.png" alt="Logo" style="height: 40px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="/html/PainelControle.html">Painel de
-                                Controle</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/html/TelaManuais.html">Manuais</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/html/TelaEstoque.html">Estoque</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/html/Telaperfil.html">Perfil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <a class="navbar-brand" href="#">
+            <img src="/imagens/logokemia.png" alt="Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </nav>
 
-    <!-- Container Principal -->
-    <div class="container mt-5 pt-5">
-        <h2 class="text-center mb-4">Tarefas</h2>
-        <div id="task-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            <!-- Spinner de carregamento (opcional, será manipulado via JS) -->
-            <div id="loading-spinner" class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Carregando...</span>
+    <!-- Header -->
+    <header class="text-center py-4">
+        <h1>Olá, Vitor!</h1>
+        <div class="month-display">
+            <h2>Jan 2024</h2>
+        </div>
+    </header>
+
+    <!-- Agenda -->
+    <main class="container">
+        <div class="row gy-3">
+            <!-- Repetição de dias e tarefas -->
+            <div class="col-md-4">
+                <div class="task-card orange">
+                    <span class="task-date">06 Seg</span>
+                    <div class="task-details">
+                        <p class="task-title">Checar Válvulas</p>
+                        <p class="task-time">15:30</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">06 Seg</span>
+                    <div class="task-details">
+                        <p class="task-title">Coleta Tanque 02</p>
+                        <p class="task-time">16:20</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">06 Seg</span>
+                    <div class="task-details">
+                        <p class="task-title">Coleta Tanque 03</p>
+                        <p class="task-time">16:40</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">06 Seg</span>
+                    <div class="task-details">
+                        <p class="task-title">Abertura Tanque 01</p>
+                        <p class="task-time">17:30</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">06 Seg</span>
+                    <div class="task-details">
+                        <p class="task-title">Monitoramento rotina</p>
+                        <p class="task-time">18:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="task-card orange">
+                    <span class="task-date">07 Ter</span>
+                    <div class="task-details">
+                        <p class="task-title">Checar Válvulas</p>
+                        <p class="task-time">15:30</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">07 Ter</span>
+                    <div class="task-details">
+                        <p class="task-title">Coleta Tanque 02</p>
+                        <p class="task-time">16:20</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">07 Ter</span>
+                    <div class="task-details">
+                        <p class="task-title">Coleta Tanque 03</p>
+                        <p class="task-time">16:40</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">07 Ter</span>
+                    <div class="task-details">
+                        <p class="task-title">Abertura Tanque 01</p>
+                        <p class="task-time">17:30</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">07 Ter</span>
+                    <div class="task-details">
+                        <p class="task-title">Monitoramento rotina</p>
+                        <p class="task-time">18:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="task-card orange">
+                    <span class="task-date">08 Qua</span>
+                    <div class="task-details">
+                        <p class="task-title">Checar Válvulas</p>
+                        <p class="task-time">15:30</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">08 Qua</span>
+                    <div class="task-details">
+                        <p class="task-title">Coleta Tanque 02</p>
+                        <p class="task-time">16:20</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">09 Qui</span>
+                    <div class="task-details">
+                        <p class="task-title">Coleta Tanque 03</p>
+                        <p class="task-time">16:40</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">09 Qui</span>
+                    <div class="task-details">
+                        <p class="task-title">Abertura Tanque 01</p>
+                        <p class="task-time">17:30</p>
+                    </div>
+                </div>
+                <div class="task-card blue">
+                    <span class="task-date">09 Qui</span>
+                    <div class="task-details">
+                        <p class="task-title">Monitoramento rotina</p>
+                        <p class="task-time">18:00</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Scripts -->
-    <script src="/js/GerarToken.js"></script>
-    <script src="/js/Agenda.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
