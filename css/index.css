@@ -1,4 +1,3 @@
-/* Configurações gerais */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #1E1E28;
@@ -26,29 +25,9 @@ header .month-display {
     margin-top: 20px;
 }
 
-/* Estilização da barra de navegação */
 .navbar {
     background-color: #1E1E28;
     border-bottom: 1px solid #444;
-}
-
-.navbar .logo {
-    width: 40px;
-    height: auto;
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler-icon {
-    background-color: #FFFFFF;
-}
-
-/* Estilo das tarefas */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .task-card {
@@ -59,6 +38,7 @@ header .month-display {
     padding: 1rem;
     gap: 1rem;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .task-card .task-date {
@@ -77,18 +57,15 @@ header .month-display {
 }
 
 .task-card .task-title {
-    margin: 5;
     font-weight: bold;
     font-size: 1rem;
 }
 
 .task-card .task-time {
-    margin: 0;
     font-size: 0.9rem;
     color: #B8B8C0;
 }
 
-/* Cores para tarefas */
 .task-card.orange {
     background-color: #F26B6B;
     border-left: 6px solid #E55555;
@@ -97,14 +74,32 @@ header .month-display {
 .task-card.blue {
     background-color: #3B8FEA;
     border-left: 6px solid #2A75C6;
-    margin-top: 10px;
 }
 
-/* Ajustes de espaçamento */
-.row {
-    margin-top: 2rem;
+.modal-content {
+    background-color: #2A2A3C;
+    border-radius: 10px;
+    color: #FFFFFF;
 }
 
-.gy-3 .col-md-4 {
-    margin-bottom: 1.5rem;
+.modal-header {
+    border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+    border-top: 1px solid #444;
+}
+
+.form-label {
+    color: #FFFFFF;
+}
+
+.btn-primary {
+    background-color: #3B8FEA;
+    border-color: #3B8FEA;
+}
+
+.btn-danger {
+    background-color: #F26B6B;
+    border-color: #F26B6B;
 }
