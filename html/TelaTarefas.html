@@ -1,65 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="/css/TelaTarefas.css"> 
-    <style>
-    </style>
+    <link rel="stylesheet" href="/css/TelaTarefas.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Detalhes da Tarefa</title>
 </head>
 <body>
-    <header>
-        <h1 style="text-align: center; color: #00bcd4; margin: 20px;">Task Manager</h1>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/imagens/logokemia.png" alt="Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Fechar"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link active" href="/html/PainelControle.html">Painel de Controle</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/html/index.html">Tarefas</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/html/TelaManuais.html">Manuais</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/html/TelaEstoque.html">Estoque</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/html/Telaperfil.html">Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <main class="task-container">
-        <div class="column">
-            <h3>To Do</h3>
-            <div class="task" onclick="openModal('Task 1')">Task 1</div>
-            <div class="task" onclick="openModal('Task 2')">Task 2</div>
-        </div>
-        <div class="column">
-            <h3>In Progress</h3>
-            <div class="task" onclick="openModal('Task 3')">Task 3</div>
-        </div>
-        <div class="column">
-            <h3>Done</h3>
-            <div class="task" onclick="openModal('Task 4')">Task 4</div>
-        </div>
+    <!-- Conteúdo Principal -->
+    <main class="content">
+        <section class="task-header">
+            <div class="task-date">Seg 06</div>
+            <div class="task-info">
+                <span class="task-title">Coleta Tanque 02</span>
+                <span class="task-time">16:20</span>
+            </div>
+        </section>
+
+        <form class="task-form">
+            <div class="form-group">
+                <label for="temperatura">Temperatura</label>
+                <div class="input-container">
+                    <input type="text" id="temperatura" name="temperatura" placeholder="Digite o valor">
+                    <span class="unit">°C</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ph">PH</label>
+                <div class="input-container">
+                    <input type="text" id="ph" name="ph" placeholder="Digite o valor">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dbo">DBO</label>
+                <div class="input-container">
+                    <input type="text" id="dbo" name="dbo" placeholder="Digite o valor">
+                    <span class="unit">mg/L</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dqo">DQO</label>
+                <div class="input-container">
+                    <input type="text" id="dqo" name="dqo" placeholder="Digite o valor">
+                    <span class="unit">mg/L</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="covs">COVs</label>
+                <div class="input-container">
+                    <input type="text" id="covs" name="covs" placeholder="Digite o valor">
+                    <span class="unit">µg/L</span>
+                </div>
+            </div>
+            <button type="submit" class="confirm-button">Confirmar Tarefa</button>
+        </form>
     </main>
 
-    <div id="taskModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Edit Task</h3>
-            <form id="taskForm">
-                <input type="text" id="taskName" placeholder="Task Name" required />
-                <textarea id="taskDescription" placeholder="Task Description" rows="5" required></textarea>
-                <button type="submit">Save</button>
-            </form>
-        </div>
-    </div>
-
-    <footer style="text-align: center; margin: 20px; color: #9e9e9e;">
-        &copy; 2024 Task Manager. All rights reserved.
-    </footer>
-
-    <script>
-        function openModal(taskName) {
-            document.getElementById('taskModal').style.display = 'flex';
-            document.getElementById('taskName').value = taskName;
-        }
-
-        function closeModal() {
-            document.getElementById('taskModal').style.display = 'none';
-        }
-
-        document.getElementById('taskForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Task updated!');
-            closeModal();
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
