@@ -103,3 +103,33 @@ header .month-display {
     background-color: #F26B6B;
     border-color: #F26B6B;
 }
+/* Estilo para os cards */
+.task-card {
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.task-card .task-details {
+    margin-top: 10px;
+}
+
+/* Estilo para as checkboxes */
+.form-check {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.form-check-label {
+    font-size: 14px;
+    cursor: pointer;
+}
