@@ -52,6 +52,10 @@ function createMaterialCard(material) {
                 <p class="card-text">${material.descricao || 'Sem descrição'}</p>
                 <p class="card-text"><strong>Setor: </strong>${setor || 'Setor'} </p>
                 <p class="card-text"><strong>Quantidade:</strong> ${material.quantidade || 0} ${unidadeMedida || 'Unidade'}</p>
+                <div class="button-group">
+                    <button class="btn btn-primary editar-estoque" data-id="${material.id}">Editar</button>
+                    <button class="btn btn-danger excluir" data-id="${material.id}">Excluir</button>
+                </div>
             </div>
         </div>
     `;

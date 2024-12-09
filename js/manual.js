@@ -11,7 +11,7 @@ function carregarManuais(manuais) {
         card.classList.add('card');
 
         const img = document.createElement('img');
-        img.src = '/assets/pdf.png';  // A imagem associada ao PDF
+        img.src = '/assets/pdf.png';
         img.alt = 'Manual em PDF';
 
         const cardBody = document.createElement('div');
@@ -25,12 +25,13 @@ function carregarManuais(manuais) {
         description.classList.add('card-text');
         description.textContent = manual.descricao;
 
-        const button = document.createElement('button');
-        button.classList.add('btn', 'btn-success', 'w-100');
-        button.textContent = 'Visualizar Manual';
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.classList.add('card-buttons');
 
-        // Criação do link para abrir o PDF em base64 em uma nova guia
-        button.addEventListener('click', () => {
+        const visualizarBtn = document.createElement('button');
+        visualizarBtn.classList.add('btn', 'btn-success', 'flex-grow-1');
+        visualizarBtn.textContent = 'Visualizar';
+        visualizarBtn.addEventListener('click', () => {
             const base64PDF = manual.arquivosVinculados[0]?.arquivo.dados;
             if (base64PDF) {
                 const pdfWindow = window.open();
@@ -40,9 +41,22 @@ function carregarManuais(manuais) {
             }
         });
 
+        const apagarBtn = document.createElement('button');
+        apagarBtn.classList.add('btn', 'btn-danger', 'flex-grow-1');
+        apagarBtn.textContent = 'Apagar';
+        apagarBtn.addEventListener('click', () => {
+            if (confirm(`Deseja apagar o manual "${manual.nome}"?`)) {
+                // Implementar lógica de exclusão aqui.
+                alert('Manual apagado com sucesso.');
+            }
+        });
+
+        buttonsContainer.appendChild(visualizarBtn);
+        buttonsContainer.appendChild(apagarBtn);
+
         cardBody.appendChild(title);
         cardBody.appendChild(description);
-        cardBody.appendChild(button);
+        cardBody.appendChild(buttonsContainer);
 
         card.appendChild(img);
         card.appendChild(cardBody);
