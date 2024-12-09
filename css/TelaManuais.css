@@ -6,21 +6,15 @@ body {
 #manuais-container {
     display: flex;
     flex-wrap: wrap;
-    /* Permite quebra de linha */
     justify-content: space-between;
-    /* Espaçamento horizontal */
     gap: 20px;
-    /* Espaço entre os cards */
     padding: 20px;
 }
 
 .card {
     flex: 1 1 calc(20% - 20px);
-    /* Cada card ocupa 20% da largura menos o espaçamento */
     max-width: calc(20% - 20px);
-    /* Limita a largura máxima */
     margin-bottom: 20px;
-    /* Espaço inferior para separação de linhas */
     background-color: #282c34;
     color: white;
     border: none;
@@ -47,44 +41,39 @@ body {
     color: #adb5bd;
 }
 
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
 .btn {
     margin-top: auto;
-    /* Alinha o botão na parte inferior do card */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
-/* Estilo do título */
 .titulo-manual {
     font-family: 'Roboto', sans-serif;
-    /* Fonte personalizada */
     font-size: 2.5rem;
-    /* Tamanho maior */
     font-weight: bold;
-    /* Negrito */
     text-align: center;
-    /* Centralizado */
     background: linear-gradient(90deg, #4b7294, #a4c56d, #84bbe0, #84b174, #70a074);
     -webkit-background-clip: text;
-    /* Apenas clipe no texto */
     -webkit-text-fill-color: transparent;
-    /* Preenche com gradiente */
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    /* Sombra para destacar */
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .card {
         flex: 1 1 calc(50% - 20px);
-        /* 2 cards por linha em telas médias */
     }
 }
 
 @media (max-width: 576px) {
     .card {
         flex: 1 1 100%;
-        /* 1 card por linha em telas pequenas */
     }
 }

@@ -61,30 +61,55 @@ body {
     font-size: 0.9rem;
 }
 
-/* Botão dentro do card */
+/* Grupo de botões */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* Espaçamento entre os botões */
+    margin-top: 10px;
+}
+
+/* Botões no grupo */
 .btn {
-    margin-top: auto;
-    /* Alinha o botão na parte inferior do card */
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
+    padding: 6px 12px;
+    /* Botões menores */
     border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
     cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    /* Fonte menor */
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #4cae4c;
-    /* Cor ao passar o mouse */
+/* Botão "Editar Estoque" */
+.btn-primary {
+    background-color: #f0ad4e;
+    /* Amarelo */
+    color: white;
+    border: none;
 }
 
+.btn-primary:hover {
+    background-color: #ec971f;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+/* Botão "Excluir" */
+.btn-danger {
+    background-color: #d9534f;
+    /* Vermelho */
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
 
 /* Estilo do título */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
 .titulo-estoque {
     font-family: 'Roboto', sans-serif;
     /* Fonte personalizada */
@@ -103,7 +128,6 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     /* Sombra para destacar */
 }
-
 
 /* Responsividade */
 @media (max-width: 768px) {
